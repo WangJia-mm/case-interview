@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*第一种方法：浮动布局 缺点：浮动布局中，在IE6以下版本，如果再设置了margin-left或者margin-right，此时margin值会加倍 ，解决方案是在float元素上加display:inline-block,将其转为行内属性*/
+/*        .outer{
+            position: relative;
+            margin: 20px auto;
+            width: 800px;
+            height: 300px;
+            background: skyblue;
+        }
+        .outer div{
+            height: 200px;
+        }
+        .outer div:nth-of-type(1){
+            float: left;
+            width: 300px;
+            background: pink;
+        }
+        .outer div:nth-of-type(2){
+            float: right;
+            width: 300px;
+            background: #8cffc1;
+        }
+        .outer div:nth-of-type(3){
+            margin:0 300px;
+            background: slateblue;
+        }*/
+        /*第二种方法：绝对定位 优点：布局灵活，改动方便 缺点：绝对定位的元素会脱离文档流，如果不给元素设置宽高，那么页面中的其他元素的位置就错乱了*/
+ /*       .outer{
+            position: relative;
+            margin: 20px auto;
+            width: 800px;
+            height: 300px;
+            background: skyblue;
+        }
+        .outer div{
+            position: absolute;
+            top: 0;
+            height: 200px;
+        }
+        .outer div:nth-of-type(1){
+            left: 0;
+            width: 300px;
+            background: pink;
+        }
+        .outer div:nth-of-type(2){
+            right: 0;
+            width: 300px;
+            background: silver;
+        }
+        .outer div:nth-of-type(3){
+            left: 300px;
+            right: 300px;
+            background: lightgreen;
+        }*/
+        /*第三种方法：flex布局 优点：语法简单，如果有图片或者文字的话，会让文字围绕图片排列，不会造成大块空白，缺点：但浮动后的元素也脱离了文档流，不浮动的元素会无视这个空间  兼容性：不同的浏览器要加前缀*/
+   /*     .outer{
+            display: flex;
+            position: relative;
+            margin: 20px auto;
+            width: 800px;
+            height: 300px;
+            background: skyblue;
+        }
+        .outer div{
+            height: 200px;
+        }
+        .outer div:nth-of-type(1){
+            width: 300px;
+            background: sandybrown;
+        }
+        .outer div:nth-of-type(2){
+            flex: 1;
+            background: mistyrose;
+        }
+        .outer div:nth-of-type(3){
+            width: 300px;
+            background: pink;
+        }*/
+        /*第四种：表格布局  优点：布局容易，快捷，兼容性好，缺点：改动不方便，调整的时候工作量大*/
+    /*    .outer{
+            display: table;
+            margin: 20px auto;
+            width: 800px;
+            height: 300px;
+            background: skyblue;
+        }
+        .outer div{
+            height: 200px;
+            display: table-cell;
+        }
+        .outer div:nth-of-type(1){
+            background: pink;
+            width: 300px;
+        }
+        .outer div:nth-of-type(3){
+            background: khaki;
+            width: 300px;
+        }
+        .outer div:nth-of-type(2){
+            text-align: center;
+            line-height: 200px;
+            background: violet;
+        }*/
+
+        /*第五种：网格布局  目前在项目中还不适用这种布局，默认情况下，不兼容任何浏览器，Internet Explorer 10 和 11 已经可以实现支持，但也是利用一种过时的语法实现的*/
+       /* .outer{
+            display: grid;
+            width: 800px;
+            grid-template-rows: 200px;
+            grid-template-columns: 300px auto 300px;
+            background: skyblue;
+        }
+        .outer div:nth-of-type(1){
+            background: pink;
+        }
+        .outer div:nth-of-type(3){
+            background-color: #f0d266;
+        }
+        .outer div:nth-of-type(2){
+            background-color: #0BC7B4;
+        }*/
+    </style>
+</head>
+<body>
+<!--假设高度已知，请写出三栏布局，其中左栏、右栏宽度各为300px，中间自适应。
+    请写出五到七种方案，并说出各种方案的优缺点和兼容性
+-->
+<div class="outer">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

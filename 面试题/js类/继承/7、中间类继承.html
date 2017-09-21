@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>14、中间类继承</title>
+</head>
+<body>
+<script type="text/javascript">
+    var arr=[11,22,33,44];
+    arr.shift();//这是数组原型上的方法
+    function sum(){
+        //类数组使用数组方法
+        arguments.__proto__=Array.prototype;//在IE下被屏蔽掉了
+        console.log(arguments.shift());
+    }
+    sum(1,23,45);
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+    1、DOM 0级事件 onclick
+    常用的DOM 0级事件有：
+    //常用事件：onclick、onmouseover、onmouseout、onmouseenter、onmouseleave、ondblclick（双击）、onresize（窗口大小改变时会触发）、onmousedown（按下鼠标会触发）、onmouseup（鼠标第二次点击的时候才会触发）、onmousemove（鼠标在元素内移动时就会不断触发）、onload（加载成功，等dom结构以及页面中的所有文件资源图片等加载完之后才会触发）、onerror（加载失败）、onscroll（滚动条事件，只要滚动条移动，就会触发）、onmousewheel（移动滚轮才会触发、e.wheelDelta：判断滚轮方向，向下滑是-120，向上滑是120、有兼容性，火狐不支持）
+    //表单事件：onchange（改变value值并且焦点离开时会触发）、oninput（在输入value值时，就会不停触发），可以实现单向绑定、onkeydown（按下键盘时会触发）、onkeyup、onfocus（获取焦点）、onblur（焦点离开）
+
+    2、DOM二级事件
+    addEventListener  attachEvent  detachEvent
+
+-->
+
+<!--
+    描述DOM事件捕获和冒泡的具体流程?
+    冒泡阶段：从里到外 （冒泡阶段只在DOM 0级事件中有）
+    目标阶段：
+    捕获阶段：从外到里
+
+    执行的时候是先执行冒泡->目标->捕获
+
+-->
+
+<!--
+    Event对象的常见应用场景?
+    type   e.type  事件类型
+    target e.target||e.srcElement  事件源
+    e.stopPropagation() ? e.stopPropagation() : e.cancelBubble = true;   阻止冒泡传播行为
+    e.preventDefault()? e.preventDefault(): e.returnValue=false;   阻止默认行为的兼容处理
+    return false; //在标准浏览器中和IE低版本都适用
+    e.clientX、e.clientY  距离可视窗口的左上距离
+    e.pageX  e.pageY  距离body的X轴坐标和Y轴坐标  兼容处理
+    var scrollL = document.documentElement.scrollLeft || document.body.scrollLeft;
+        e.pageX = e.pageX || (e.clientX + scrollL);
+        var scrollT = document.documentElement.scrollTop || document.body.scrollTop;
+        e.pageY = e.pageY || (e.clientY + scrollT);
+-->
+
+<!--
+    事件委托：利用事件默认会进行冒泡传播机制。给最外层元素相关行为绑定事件，当里面元素相关行为触发的时候，它会触发最外层元素的行为，然后我们根据事件源做出相应的处理
+
+-->
+
+
+<!--事件冒泡,e.target和e.currentTarget的区别
+    事件冒泡：当给元素绑定事件时，执行该事件时，该元素的所有父级元素的同一事件也会被触发，叫事件冒泡
+    e.target：触发事件的元素
+    e.currentTarget：事件绑定的元素
+    两者在没有冒泡的情况下，是一样的值，但在用了事件委托的情况下，就不一样了
+
+
+-->
+
+<script type="text/javascript">
+a.detachEvent()
+</script>
+</body>
+</html>

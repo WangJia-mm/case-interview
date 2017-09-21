@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>12、寄生组合继承</title>
+</head>
+<body>
+<script type="text/javascript">
+    //寄生组合继承：借用构造函数+原型式继承 （弥补组合继承的缺点）
+    Object.myCreate= function (o) {
+        function F(){
+
+        }
+        F.prototype=o;
+        return new F;
+    };
+
+    function A(){
+        this.a='a';
+        this.say= function () {
+            console.log('say');
+        }
+    }
+    A.prototype.mess='mess';
+    //通过原型式继承，将父类的公有属性，继承为子类的公有属性
+//    B.prototype=Object.create(A.prototype);
+    B.prototype=Object.myCreate(A.prototype);
+    B.prototype.constructor=B;
+    function B(){
+        A.call(this);//通过借用构造函数，将父类的私有属性继承为子类实例的私有属性
+    }
+    var b=new B;
+    console.log(b);
+
+</script>
+</body>
+</html>

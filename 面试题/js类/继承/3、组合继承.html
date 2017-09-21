@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>10、组合继承</title>
+</head>
+<body>
+<script type="text/javascript">
+    //组合继承：原型链继承加上借用构造函数继承
+    //原型链的缺点：把父类私有和公有都继承为子类的公有属性
+    //借用构造函数缺点：只能继承父类中的私有属性
+    //组合继承的缺点：
+    //1、子类会把父类的实例属性（私有属性）继承过来两组，一组作为子类实例的私有属性，一组作为子类的公有属性
+    //2、父类会执行两次
+    function A(){
+        this.a=123;
+        this.say= function () {
+            console.log('say');
+        }
+    }
+    A.prototype.mess='mess';
+    B.prototype=new A;//继承父类中原型属性（继承公有）原型链继承执行一次
+    B.prototype.constructor=B;
+    function B(){
+        A.call(this);//继承私有属性  call继承执行一次
+    }
+    var b=new B;
+    console.log(b);
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css选择器</title>
+</head>
+<body>
+<!--
+1、id选择器     #div  选择id为div的元素
+2、类名选择器   .div   选择所有类名为div的元素
+3、标签选择器    div   选择所有标签为div的元素
+4、通用选择器   *      选择所有元素
+5、属性选择器    [title]  选择所有带title属性是元素
+6、后代选择器(派生选择器) div p  	选择 <div> 元素内部的所有 <p> 元素。
+7、子级选择器     div>p    	选择父元素为 <div> 元素的所有 <p> 元素。
+8、相邻兄弟选择器   div+p     	选择紧接在 <div> 元素之后的所有 <p> 元素。
+9、并集选择器      div,p       	选择所有 <div> 元素和所有 <p> 元素。
+10、交集选择器     .sum1.sum2     选择符合 .sum1.sum2的元素
+11、伪类选择器     :link		    选择所有未被访问的链接。
+                  :visited		选择所有已被访问的链接。
+                  :active	    选择活动链接。
+                  :hover		选择鼠标指针位于其上的链接。
+                  :focus        选择获得焦点的 input 元素。
+-->
+
+<!--
+    css3属性选择器
+    1、[title=mm]   选择相同标签属性和属性值的所有元素
+    2、[name~=mm]    选择属性包含指定名字的所有元素
+    3、[title|=mm]    选择title属性值以mm开头的所有元素
+    4、[href^=http]   选择其href属性值以http开头的元素
+    5、[href$=com]     选择href属性值以com结尾的元素
+    6、[title*zf]      选择只要包含zf这个字符的所有属性的元素
+-->
+
+<!--
+    css3伪类选择器
+    1、:first-of-type    选择父级元素里的第一个指定子元素
+    2、:last-of-type      选择父级元素里的最后一个指定子元素
+    3、:only-of-type      获取父元素中唯一一个指定元素
+    4、:only-child     父级元素中只能有一个子元素
+    5、:nth-child(1)    指定元素必须是父级元素的第一个子元素  （n）是父级元素中的这个元素的物理位置，和元素的顺序无关，他是父级元素的第几个元素，选择顺序从上到下
+    6、:nth-last-child(n)  选择顺序是从下向上（针对父级元素中的子元素）
+    7、:nth-of-type(n) 从当前父级元素中指定的第一个元素开始计算，和父级元素里的子元素的顺序无关，括号里可以使用奇数(odd) 和偶数(even),但是不兼容低版本浏览器
+    8、:nth-last-of-type(n)  从当前父级元素下，从最后一个指定元素开始向上查找
+    9、:last-child  只查找父级元素中的最后一个如果父级元素中没有改指定元素，则代码无效
+    10、:root  选择根元素（即html元素）
+    11、:empty  选择元素中没有任何内容的元素
+    12、::selection  选择用户选择部分
+    13、:not(p)      选择不是p元素的其他元素
+    14、:enabled     	选择每个启用的 <input> 元素。
+    15、:disabled       选择每个禁用的 <input> 元素
+    16、:checked        选择每个被选中的 <input> 元素。
+-->
+
+<!--
+
+    css3新增特性
+    1、CSS3实现圆角（border-radius），阴影（box-shadow），
+    2、对文字加特效（text-shadow、），线性渐变（gradient），旋转（transform）
+    3、transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);// 旋转,缩放,定位,倾斜
+    4、增加了更多的CSS选择器  多背景 rgba
+    5、在CSS3中唯一引入的伪元素是 ::selection.
+    6、媒体查询，多栏布局
+    7、border-image
+-->
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

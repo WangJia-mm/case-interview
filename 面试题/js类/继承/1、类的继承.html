@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>7、类的继承</title>
+</head>
+<body>
+<script type="text/javascript">
+    //1、可枚举和不可枚举
+//    var num=1;//只是一个数字
+//    var num=new Number(1);//创建一个实例
+//    var obj={name:"zhufeng",age:7};
+//    for(var k in obj){//可以遍历私有的，也可以遍历原型上的公有属性（只有自定义的公有属性）、一般我们遍历一个对象，只需要将私有的遍历出来即可，可以使用以下两种方法
+        //方法一：不常用
+//        if(ibj.propertyIsEnumerable(k)){//在原型上的方法用propertyIsEnumerable都是不可枚举的
+//            console.log(obj[k]);
+//        }
+        //方法二：最常用
+//        if(obj.hasOwnProperty(k)){//这种方法最常用
+//            console.log(k);
+//        }
+//    }
+//    Object.prototype.toString();//Object原型上的toString方法是检测数据类型的
+    
+    //2、Object.create();方法创建一个拥有指定原型和若干个指定属性的对象,在IE6-8下不兼容，在ECMAS5下没有这个属性
+//    var obj={//相当于xxxfff000
+//        name:"zhufeng",
+//        age:8,
+//        constructor:Fn,
+//        getX: function () {
+//        }
+//    };
+    //克隆一个对象解决这个问题
+    //1、创建一个空对象，将obj里的私有属性放到obj2里
+//    var obj2={};
+//    for(var k in obj){
+//        if(obj.hasOwnProperty(k)){
+//            obj2[k]=obj[k];
+//        }
+//    }
+//    console.log(obj2 === obj);//false  不是一个对象指针
+    //2、创建一个对象，将原有对象上的私有属性当做新创建的对象上的原型上的属性（也就是将原有对象作为新对象的原型）
+//    var obj3=Object.create(obj);//这样会将obj上的私有属性放在obj3的原型上
+//    console.log(obj3 === obj);//false
+//    function Fn(){
+//
+//    }
+//    Fn.prototype=obj;//xxxfff000
+//    Fn.prototype.sum= function () {
+//
+//    };
+    //原型上发生改变，obj里的也会发生改变，因为指向的是同一个引用地址
+//    var obj={
+//        getX: function () {
+//
+//        }
+//    };
+//    var obj2=Object.create(obj);
+//    obj2.getX();
+//    obj.getY= function () {
+//        console.log(2);
+//    };
+//    obj2.getY();
+
+    //自己模拟一个create方法
+//    var obj={
+//        getX: function () {
+//
+//        }
+//    };
+//    function object(obj){
+//        function Fn(){
+//
+//        }
+//        Fn.prototype=obj;
+//        return new Fn;
+//    }
+//    var newObj=object(obj);
+
+    //1、原型继承
+     function myObject(){
+
+     }
+</script>
+</body>
+</html>

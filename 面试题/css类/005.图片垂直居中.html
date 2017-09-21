@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*第一种方法：已知宽高*/
+     /*   div{
+            margin: 20px auto;
+            width: 500px;
+            height: 300px;
+            border: 1px solid #000;
+            line-height: 300px;
+        }
+        img{
+            display: inline-block;
+            width: 300px;
+            height: 200px;
+            vertical-align: middle;
+        }*/
+        /*第二种方法：已知宽高*/
+    /*    div{
+            margin: 20px auto;
+            position: relative;
+            width: 500px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        img{
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            left: 0;
+            top: 50%;
+            !*margin-left: -150px;*!
+            margin-top: -100px;
+        }*/
+
+        /*第三种方法 使用display:table-cell 可实现未知宽高的图片居中，前提是图片的大小小于容器*/
+       /* .wrap{
+            margin: 20px auto;
+            width: 500px;
+            height: 300px;
+            border: 1px solid #000;
+            display: table-cell;
+            vertical-align: middle;
+        }
+        .wrap img{
+            width: 200px;
+            height: 200px;
+        }*/
+
+        /*利用flex实现 未知宽高，且图片大小小于容器*/
+        .wrap{
+            display: flex;
+            align-items: center;
+            margin: 20px auto;
+            width: 500px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+        .wrap img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <img src="https://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/1ad5ad6eddc451dac841b78ab7fd5266d016321f.jpg" alt="">
+</div>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>11、原型式继承</title>
+</head>
+<body>
+<script type="text/javascript">
+    //原型式继承：将传递进来的对象作为子类的公有属性
+    //Object.create();方法创建一个拥有指定原型和若干个指定属性的对象,在IE6-8下不兼容，在ECMAS 5下没有这个属性
+//    Object.create();//创建一个新对象，让这个新对象的__proto__指向这个传递进来的对象
+    var obj1={name:'mm',id:1};
+    var obj2=Object.create(obj1);//obj2.__proto__=obj1
+    console.log(obj2.name);
+    //写一个Object.create方法，解决兼容性
+    Object.myCreate= function (o) {
+        //创建一个临时构造函数
+        function Fn(){
+
+        }
+        //让这个临时构造函数原型等于传递进来的对象
+        Fn.prototype=o;//此时的o代表的是A.prototype
+        return new Fn;//返回这个临时构造函数的实例Fn的实例的__proto__=o
+    };
+    function A(){
+        this.a='a';
+        this.say= function () {
+            console.log('say');
+        }
+    }
+    A.prototype.mess='mess';
+//    B.prototype=Object.create(A.prototype);//创建一个新对象（并不是直接返回A类的实例）作为子类的原型对象，，并且这个对象的__proto__=A.prototype
+    B.prototype=Object.myCreate(A.prototype);
+    B.prototype.constructor=B;
+    function B(){
+
+    }
+    var b=new B;
+    console.log(b);
+
+</script>
+</body>
+</html>
