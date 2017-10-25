@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    /*  if(!("a" in window)){
+     var a = 1;
+
+     }
+     console.log(a);//undefined  因为带var的会提前声明，而if里的代码虽然不会执行，但也会提前声明，如果是function，只会声明为undefined，而不会定义
+     function MyObj(){
+     this.p.pid++;// 1  2
+     }
+     MyObj.prototype.p = {'pid':0};// 2
+     MyObj.prototype.getNum = function(num){
+     return this.p.pid+num;
+     };
+     var _obj1 = new MyObj();// 1
+     var _obj2 = new MyObj();// 2
+     console.log(_obj1.getNum(1)+_obj2.getNum(2)); // 7
+
+
+     var func = (function(a){
+     this.a = a;//4
+     return function(a){//a=1
+     a+=this.a;//a=5
+     return a;//5
+     }
+     })(function(a,b){
+     return a;
+     }(1,2));
+     console.log(func(4));//5
+
+
+     function Foo() {
+     getName = function () { alert (1); };//取的是全局中的getName
+     return this;
+     }
+     Foo.getName = function () { alert (2);};
+     Foo.prototype.getName = function () { alert (3);};
+     var getName = function () { alert (4);};
+     function getName() { alert (5);}
+
+     //请写出以下输出结果：
+     Foo.getName();//2
+     getName();// 4
+     Foo().getName();//1
+     getName();//  1
+     new Foo.getName();//2
+     new Foo().getName();//3
+     new new Foo().getName();//3
+
+
+     /!*for(var i=0;i<10;i++){
+     alert(i); // 0
+     break;
+     }
+     alert(i);//0
+
+     for(var i=0;i<10;i++){
+     continue;
+     alert(i);
+     }
+     alert(i) // 10*!/
+
+
+     function C1(name){
+     if(name) this.name = name;
+     }
+     function C2(name){
+     this.name =name;
+     }
+     function C3(name){
+     this.name = name ||'join';
+     }
+     C1.prototype.name='Tom';
+     C2.prototype.name='Tom';
+     C3.prototype.name='Tom';
+     alert(new C1().name)+(new C2().name)+(new C3().name);// Tom
+
+
+     var a=1;
+     var obj ={name:"tom"};
+     function fn(){
+     var a2 = a,
+     obj2 = obj,
+     a2 =a;
+     obj2.name ='jack'
+     }
+     fn();
+     console.log(a);//1
+     console.log(obj);//jack
+     */
+
+    /* for (var i = 0; i < 5; i++) {
+     setTimeout(()=>{
+     console.log(new Date, i);//5,5,5,5,5
+     }, 1000);
+     }
+
+     console.log(new Date, i);//5*/
+
+
+    /* for (let i = 0; i < 5; i++) {
+     setTimeout(()=> {
+     console.log(new Date, i);
+     }, 1000);
+     }
+
+     console.log(new Date, i);*///这里会报i is not defined 因为let出来的i只存在循环中，块级作用域
+
+    //    期望代码输出变成5-->0,1,2,3,4，应该怎么改
+    /*for(var i=0;i<5;i++){
+     (function (n) {
+     setTimeout(function () {
+     console.log(new Date(),n)
+     },1000)
+     })(i)
+     }
+     console.log(i);*/
+
+    //还可以写成
+    /*var fn=function (i) {
+     setTimeout(function () {
+     console.log(new Date(),i)
+     },1000)
+     };
+
+     for(var i=0;i<5;i++){
+     fn(i)
+     }
+     console.log(i);*/
+
+
+    //如果期望的代码输出变成0->1->2->3->4->5，并且要求console.log不变，该怎么改造？即代码执行时，立即输出0，之后每隔一秒依次输出1,2,3,4，循环结束后大概5s后输出5
+    //es6写法
+    /*const tasks=[];
+     for(var i=0;i<5;i++){
+     ((j)=>{
+     tasks.push(new Promise((resolve,reject)=>{
+     setTimeout(()=>{
+     console.log(j);
+     resolve();
+     },1000*j);
+     }))
+     })(i);
+     }
+     Promise.all(tasks).then(()=>{//实现并行，数组内都是promise实例，需要都为resolve时，才会返回resolve状态，如果有一个reject状态，就都是reject状态
+     setTimeout(()=>{
+     console.log(i);
+     },1000)
+     })*/
+
+    //es7写法 利用async await
+    const sleep = (timeMs) => new Promise((resolve) => {
+        setTimeout(resolve, timeMs);
+    });
+    (async () => {
+        for (var i = 0; i < 5; i++) {
+            await sleep(1000);
+            console.log(i);
+        }
+        await sleep(1000);
+        console.log(i);
+    })();
+
+
+</script>
+</body>
+</html>

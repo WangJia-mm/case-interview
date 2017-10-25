@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #node{
+            background-color: orange;
+        }
+        .list .classB{
+            background-color: yellow;
+        }
+        .classA{
+            width: 100px;
+            height: 50px;
+            color: red !important;
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid red;
+            box-sizing: border-box;
+
+        }
+    </style>
+</head>
+<body>
+<!--<div id="ab" style="background-color: red;width: 100px;height: 100px"></div>-->
+<!--<ul id="oUl">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>-->
+<!--<div class="list">-->
+    <div id="node" class="classA classB" style="color: blue"></div>
+    <!--#node 的背景颜色是orange-->
+<!--</div>-->
+<script type="text/javascript">
+/*    var oUl=document.getElementById('oUl');
+    oUl.onclick=function (e) {
+        e=e||window.event;
+        var tar=e.target||e.srcElement;//兼容IE8以下低版本浏览器
+        console.log(tar.innerHTML);
+    }*/
+
+    /*!!(0 == false) true
+     !!(0==undefined) false  Number(undefined)=> NaN
+     undefined==null true
+     isNaN('121')==NaN false
+     typeof 1==true?1:0  0 typeof 1==>'number' !=true
+     typeof []=='array' false object
+     [] instanceof Array true*/
+
+    /*for(var i=0;i<3;i++){
+        setTimeout(function () {//因为setTimeout是异步的，所以先执行for循环，此时自执行函数跟着for循环执行，所以得出的b的值是0 1000 2000
+            console.log(i);// 3*3  执行完for循环后执行定时器，此时循环已结束，所以得出i的值是3
+        },(function () {
+            var b=i*1000;
+            console.log(b);//0 1000 2000
+            return b;
+        })());
+    }*/
+//    写一个实现bind的方法
+    /*var dom =document.getElementById('ab');
+    dom.onclick=(function () {
+        console.log(this);
+    }).bind(this);
+
+    Function.prototype._bind=function (that) {
+        var fn=this;
+        var params=[].slice.call(arguments,1);
+        return function () {
+            var arr=params.length?params:arguments;
+            fn.apply(that,arr)
+        }
+    }*/
+//    用构造函数方法和原型链的方法写出一个Duck和子类DuckToy的方法
+   /* function Duck() {
+        this.color='yellow';
+        this.quack=function () {
+            console.log(quack);
+        }
+    }
+    DuckToy.prototype=new Duck;
+    DuckToy.prototype.constructor=DuckToy;
+    function DuckToy() {
+        Duck.call(this);
+    }
+
+    DuckToy.prototype.play=function () {
+        console.log(play);
+    }*/
+
+   //检测字符串是否符合回文规则（回文规则就是顺读和逆读都是一样的）
+    //思路：将其拆分为数组，然后找到中间项，让前面的一半和倒数时的后一半进行比较
+/*   var str='abbaafc';
+   function isPalindrome(str) {
+       var newStr=str.split('');
+//       Math.ceil向上取整
+       for(i=0;i<Math.ceil(newStr.length/2);i++){
+           if(newStr[i]!==newStr[newStr.length-1-i]){
+               console.log('不符合');
+               return;
+           }
+       }
+       console.log('符合')
+
+   }
+   isPalindrome(str);*/
+
+var fullName = 'language';
+var obj = {
+    fullName:'javascript',
+    prop:{
+        getFullName:function(){
+            console.log(this);//对应的是prop里的对象，但是这个对象里没有fullName这个属性，所以是undefined
+            return this.fullName;
+        }
+    }
+};
+
+console.log(obj.prop.getFullName());
+var test = obj.prop.getFullName;
+console.log(test());//language  此时test执行，this是window，所以fullName是全局中的
+
+
+var name = 'window';
+var Tom = {
+    name:'Tom',
+    show:function(){
+        console.log(this.name);//window  因为是fun执行，让show执行，fun执行时this是window
+    },
+    wait:function(){
+        var fun = this.show;
+        fun();
+    }
+};
+Tom.wait();
+
+String.prototype.repeatify=function (num) {
+//    console.log(this);
+    let str=this;
+    let str1=[].slice.call(str,0);
+//    console.log(str1);
+//    console.log(str1.join(''));
+    let str2= str1.join('');
+//    console.log(str2);
+//    console.log(str2.repeat(num));
+    return str2.repeat(num);
+
+};
+'abc'.repeatify(3);
+
+//正则匹配输出 hello[哈哈]world
+var str = 'hello<img src="haha.png" alt="哈哈"/>world';
+let reg=/^hello\[哈哈\]world$/g;
+
+
+//常见清除浮动方法
+/**
+ * 1、overflow：hidden
+ * 2、使用after伪元素：设置display:block;clear:both;content:'';
+ * 3、添加一个空的div，给其添加clear:both
+ * 4、给父级元素添加高度
+ * 5、在父级元素上添加clearfix属性名，写在css样式中
+ */
+
+//点击穿透、点击事件有300ms延迟、fastclick
+
+/**
+ * 解释一下Javascript的同源策略。你所能了解到的ajax跨域解决方案以及各种方案的优缺点？
+ * 协议，域名，端口号都相同
+ * jsonp、script、jQuery、ifarme
+ * 后台要设置 响应头的端口号，响应返回的格式，请求方法
+ * rem 百分比
+ * cookie、localStorage、sessionStorage三者的优缺点和使用场景。
+ *
+ */
+</script>
+</body>
+
+</html>
